@@ -1,46 +1,59 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View } from 'react-native';
+import BotaoGrandeVerde from './src/components/botaoGrandeVerde';
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.xpto}>Hello Word!</Text>
-      <Text style={styles.secundario}>Usando expo-cli!</Text>
-      <Text>Terceiro</Text>
-      <TouchableOpacity style={styles.botaoPrincipal}>
-      <Text style={styles.textBotao}>Text de botao</Text>      
-      </TouchableOpacity>
+      <Text style={styles.xpto}>Cadastre-se</Text>
+
+      <Image source={require('./assets/estrela.png')} style={styles.logoPrincipal}></Image>
+
+      <TextInput 
+      placeholder='Insira o login' 
+      style={styles.inputLogin}
+      keyboardType={'email-address'}
+      placeholderTextColor={'white'}
+      />
+      <TextInput 
+      placeholder='Insira a senha' 
+      style={styles.inputLogin}
+      secureTextEntry={true}
+      placeholderTextColor={'white'}
+      />
+
+      <BotaoGrandeVerde textoDoBotao={'Acessar'} /> 
+
       <StatusBar style="auto" />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FA7E11',
     alignItems: 'center',
     justifyContent: 'center',
   },
   xpto:{
-    color:'red',
-    fontSize: 40,
-  },
-  secundario:{
-    color:'green',
-    fontSize: 20,
-  },
-  botaoPrincipal:{
-    backgroundColor:'blue',
-    height: 40,
-    width: 120,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textBotao:{
     color:'white',
-    fontWeight: 'bold'
-   }
+    fontSize: 40,
+    marginBottom: 10,
+  },
+  logoPrincipal:{
+    height: 200,
+    width: 200,
+  },
+  inputLogin:{
+    height: 60,
+    width: 300,
+    fontSize: 20,
+    marginTop: 10,
+    borderBottomWidth: 1,
+    borderColor: 'white',
+  }
 
 });
