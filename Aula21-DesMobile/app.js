@@ -33,7 +33,15 @@ app.get('/api/usuarios', (req, res)=>{
 
 	//const usuarios = require('./usuarios.json');
 	
-	res.json(db);
+	db.query('select * from usuario', (err, results)=>{
+        if(err){
+            console.error('Erro na consulta', err);
+            res.status(500).send('Erro na consulta');
+        }
+        else{
+            res.status(200).json(results);
+        }
+    })
 });
 
 app.post('/api/usuario', (req, res) =>{
